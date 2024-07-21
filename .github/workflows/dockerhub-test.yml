@@ -30,7 +30,7 @@ jobs:
 
   be-build:
     needs: detect-changes
-    if: ${{ needs.changes.outputs.backend == 'true' }}
+    if: ${{ needs.detect-changes.outputs.backend == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
