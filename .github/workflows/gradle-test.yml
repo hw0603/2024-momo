@@ -62,7 +62,7 @@ jobs:
 
     - name: Publish unit test results
       uses: EnricoMi/publish-unit-test-result-action@v2
-      if: ${{ success() }}
+      if: always()
       with:
         files: |
           backend/build/test-results/test/TEST-*.xml
