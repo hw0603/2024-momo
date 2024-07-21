@@ -1,4 +1,4 @@
-name: Backend CI Test
+name: Backend CI Test - BE 파일 변경된 경우 테스트 자동화
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   # JOB to run change detection
-  changes:
+  detect-changes:
     runs-on: ubuntu-latest
     # Required permissions
     permissions:
@@ -29,8 +29,8 @@ jobs:
             - 'frontend/**'
         list-files: 'csv'
 
-  build:
-    needs: changes
+  be-test:
+    needs: detect-changes
     if: ${{ needs.changes.outputs.backend == 'true' }}
     runs-on: ubuntu-latest
     defaults:
