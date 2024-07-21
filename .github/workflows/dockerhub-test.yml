@@ -84,4 +84,4 @@ jobs:
 
     steps:
     - name: Docker run
-      run: docker run -d --rm --name momo-api -p 80:8080 devmomo24/momo-api
+      run: docker stop momo-api; docker run -d --rm --name momo-api -p 80:8080 devmomo24/momo-api
