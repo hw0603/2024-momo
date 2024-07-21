@@ -19,4 +19,9 @@ public class MeetingController {
         MeetingResponse meetingResponse = meetingService.findByUUID(uuid);
         return new MomoApiResponse<>(meetingResponse);
     }
+
+    @GetMapping("/")
+    public String helloWorld() {
+        return "Hello World!";
+    }
 }
