@@ -81,7 +81,20 @@ jobs:
       run:
         shell: bash
         working-directory: ./
-
+        
     steps:
-    - name: Docker run
-      run: docker stop momo-api; docker run -d --rm --name momo-api -p 80:8080 devmomo24/momo-api
+      # 1. 최신 이미지를 풀받습니다
+      - name: docker pull
+        run: sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/momo-api
+      
+      # 2. 기존의 컨테이너를 중지시킵니다
+      - name: docker stop container
+        run: sudo docker stop $(sudo docker ps -q) 2>/dev/null || true
+
+      # 3. 최신 이미지를 컨테이너화하여 실행시킵니다
+      - name: docker run new container
+        run: sudo docker run --name momo-api --rm -d -p 80:8080 ${{ secrets.DOCKERHUB_USERNAME }}/momo-api
+
+      # 4. 미사용 이미지를 정리합니다
+      - name: delete old docker image
+        run: sudo docker system prune -f
