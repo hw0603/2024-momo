@@ -27,6 +27,7 @@ jobs:
             - 'backend/**'
           frontend:
             - 'frontend/**'
+        list-files: 'csv'
 
   build:
     needs: changes
