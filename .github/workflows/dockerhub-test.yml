@@ -74,5 +74,13 @@ jobs:
     - name: Docker Hub push
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/momo-api
   
-  # be-depoly:
-  #   runs-on: self-hosted
+  be-depoly:
+    runs-on: self-hosted
+    defaults:
+      run:
+        shell: bash
+        working-directory: ~/
+
+    steps:
+    - name: Docker run
+      run: docker run -d --rm --name momo-api -p 80:8080 devmomo24/momo-api
