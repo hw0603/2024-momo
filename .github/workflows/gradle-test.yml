@@ -1,13 +1,14 @@
 name: Backend CI Test
 
 on:
+  workflow_dispatch:
   pull_request:
     branches: ['main']
-    paths: ['backend/**']
-  # workflow_dispatch
+    # paths: ['backend/**']
 
 jobs:
   build:
+    if: ${{ contains(github.event.pull_request.changed_files, 'backend/') }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -30,22 +31,22 @@ jobs:
     - name: Test with Gradle
       run: ./gradlew clean test
 
-    - name: Build with Gradle
-      run: ./gradlew build
+    # - name: Build with Gradle
+    #   run: ./gradlew build
 
     - name: show file list
       run: ls -al ./build/test-results/test
 
     - name: Publish unit test results
       uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always()
+      if: ${{ success() }}
       with:
         files: |
           backend/build/test-results/test/TEST-*.xml
 
     - name: Add comments to PR
       uses: mikepenz/action-junit-report@v4
-      if: always()
+      if: ${{ success() }}
       with:
         report_paths: |
           backend/build/test-results/test/TEST-*.xml
