@@ -28,9 +28,4 @@ public class MeetingController {
     public String helloWorld() {
         return fromYaml;
     }
-
-    @GetMapping("/cache-test")
-    public String helloWorld2() {
-        return "cache-test";
-    }
 }
