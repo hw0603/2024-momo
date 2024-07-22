@@ -28,4 +28,9 @@ public class MeetingController {
     public String helloWorld() {
         return fromYaml;
     }
+
+    @GetMapping("/momo")
+    public String helloWorld2() {
+        return "helloWorld2";
+    }
 }
