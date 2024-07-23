@@ -68,7 +68,7 @@ jobs:
       run: chmod +x ./gradlew
 
     - name: Test with Gradle
-      run: ./gradlew clean test
+      run: ./gradlew clean test --build-cache
 
     - name: Publish unit test results
       uses: EnricoMi/publish-unit-test-result-action@v2
@@ -119,5 +119,5 @@ jobs:
       run: chmod +x ./gradlew
 
     - name: Build with Gradle
-      run: ./gradlew bootjar
+      run: ./gradlew bootjar --build-cache
 
