@@ -22,6 +22,6 @@ public class MeetingController {
 
     @GetMapping("/")
     public String helloWorld() {
-        return "helloWorld";
+        return "helloWorld2";
     }
 }
