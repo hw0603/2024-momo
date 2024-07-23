@@ -83,8 +83,9 @@ jobs:
       with:
         report_paths: |
           backend/build/test-results/test/TEST-*.xml
+  
   be-build:
-    needs: detect-changes
+    needs: be-test
     if: ${{ needs.detect-changes.outputs.backend == 'true' }}
     runs-on: ubuntu-latest
     defaults:
