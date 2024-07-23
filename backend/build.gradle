@@ -41,3 +41,14 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+bootJar {
+    exclude('*.yml')
+}
+
+processResources.dependsOn('copyYML')
+tasks.register('copyYML', Copy) {
+    from './secret-test' // 서브 모듈 경로
+    include "*.yml"
+    into 'src/main/resources'
+}
