@@ -26,6 +26,6 @@ public class MeetingController {
 
     @GetMapping("/")
     public String helloWorld() {
-        return fromYaml;
+        return "helloWorld";
     }
 }
