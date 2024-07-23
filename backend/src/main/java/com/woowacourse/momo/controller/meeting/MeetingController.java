@@ -22,6 +22,6 @@ public class MeetingController {
 
     @GetMapping("/")
     public String helloWorld() {
-        return "이 문자열이 표시되면 성공한 것입니다.";
+        return "이 문자열이 표시되면 성공한 것입니다......";
     }
 }
