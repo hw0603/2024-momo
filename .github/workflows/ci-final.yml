@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   detect-changes:
+    if: ${{ github.event_name != 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read
@@ -18,8 +19,6 @@ jobs:
       backend: ${{ steps.filter.outputs.backend }}
       frontend: ${{ steps.filter.outputs.frontend }}
     steps:
-      - uses: actions/checkout@v4
-        if: ${{ github.event_name == 'workflow_dispatch' }}
       - uses: dorny/paths-filter@v3
         id: filter
         with:
@@ -32,7 +31,7 @@ jobs:
 
   be-test:
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.backend == 'true' }}
+    if: ${{ needs.detect-changes.outputs.backend == 'true'}} || ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     defaults:
       run:
