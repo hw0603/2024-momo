@@ -11,7 +11,7 @@ class AttendeeNameTest {
     @Test
     @DisplayName("참여자 이름이 20글자를 초과하면 예외를 발생시킨다.")
     void throwsExceptionIfAttendeeNameIsTooLong() {
-        assertThatThrownBy(() -> new AttendeeName("wmo"))
+        assertThatThrownBy(() -> new AttendeeName("wmfjsdlfjselifjslefliselfjlsielijsfiljslijflsio"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
