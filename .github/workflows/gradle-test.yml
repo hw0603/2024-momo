@@ -33,7 +33,7 @@ jobs:
             - 'frontend/**'
         list-files: 'csv'
 
-  be-test:
+  be-test1:
     needs: detect-changes
     if: ${{ needs.detect-changes.outputs.backend == 'true' }}
     runs-on: ubuntu-latest
