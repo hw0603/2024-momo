@@ -1,3 +1,3 @@
-[submodule "backend/secret-test"]
-	path = backend/secret-test
-	url = https://github.com/hw0603/secret-test.git
+[submodule "backend/src/main/resources/security"]
+	path = backend/src/main/resources/security
+	url = https://github.com/woowacourse-teams/2024-momo-config

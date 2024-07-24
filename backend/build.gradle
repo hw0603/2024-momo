@@ -48,7 +48,7 @@ bootJar {
 
 processResources.dependsOn('copyYML')
 tasks.register('copyYML', Copy) {
-    from './secret-test' // 서브 모듈 경로
+    from 'src/main/resources/security' // 서브 모듈 경로
     include "*.yml"
     into 'src/main/resources'
 }
