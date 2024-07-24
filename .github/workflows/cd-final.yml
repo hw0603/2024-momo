@@ -97,7 +97,10 @@ jobs:
           token: ${{ secrets.PAT_TOKEN }}
 
       - name: list files
-        run: tree
+        run: ls; pwd
+
+#      - name: copy security config
+#        run:
 
       # 1. 최신 도커 이미지 pull
       - name: docker pull
