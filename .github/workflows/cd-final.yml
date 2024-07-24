@@ -93,7 +93,7 @@ jobs:
       - name: checkout security submodule
         uses: actions/checkout@v4
         with:
-          repository: hw0603/secret-test
+          repository: woowacourse-teams/2024-momo-config
           token: ${{ secrets.PAT_TOKEN }}
 
       - name: copy security config
