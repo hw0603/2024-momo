@@ -47,9 +47,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-#        with:
-#          submodules: recursive  # yml용 submodule 체크아웃
-#          token: ${{ secrets.PAT_TOKEN }}
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -97,7 +94,7 @@ jobs:
           token: ${{ secrets.PAT_TOKEN }}
 
       - name: copy security config
-        run: mkdir -p $HOME/security; cp *.yml ~/security
+        run: mkdir -p $HOME/security; \cp -f *.yml ~/security
 
       # 1. 최신 도커 이미지 pull
       - name: docker pull
